@@ -1,0 +1,76 @@
+@-webkit-keyframes next-in {
+  0% { opacity: 0; -webkit-transform: translateY(150px); }
+  100% { opacity: 1; -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes next-in {
+  0% { opacity: 0; -moz-transform: translateY(150px); }
+  100% { opacity: 1; -moz-transform: translateY(0px); }
+}
+@-ms-keyframes next-in {
+  0% { opacity: 0; -ms-transform: translateY(150px); }
+  100% { opacity: 1; -ms-transform: translateY(0px); }
+}
+@keyframes next-in {
+  0% { opacity: 0; transform: translateY(150px); }
+  100% { opacity: 1; transform: translateY(0px); }
+}
+
+@-webkit-keyframes next-out {
+  0% { opacity: 0; -webkit-transform: translateY(0px); }
+  100% { opacity: 1; -webkit-transform: translateY(-150px); }
+}
+@-moz-keyframes next-out {
+  0% { opacity: 0; -moz-transform: translateY(0px); }
+  100% { opacity: 1; -moz-transform: translateY(-150px); }
+}
+@-ms-keyframes next-out {
+  0% { opacity: 0; -ms-transform: translateY(0px); }
+  100% { opacity: 1; -ms-transform: translateY(-150px); }
+}
+@keyframes next-out {
+  0% { opacity: 0; transform: translateY(0px); }
+  100% { opacity: 1; transform: translateY(-150px); }
+}
+
+@-webkit-keyframes prev-in {
+  0% { opacity: 0; -webkit-transform: translateY(-150px); }
+  100% { opacity: 1; -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes prev-in {
+  0% { opacity: 0; -moz-transform: translateY(-150px); }
+  100% { opacity: 1; -moz-transform: translateY(0px); }
+}
+@-ms-keyframes prev-in {
+  0% { opacity: 0; -ms-transform: translateY(-150px); }
+  100% { opacity: 1; -ms-transform: translateY(0px); }
+}
+@keyframes prev-in {
+  0% { opacity: 0; transform: translateY(-150px); }
+  100% { opacity: 1; transform: translateY(0px); }
+}
+
+@-webkit-keyframes prev-out {
+  0% { opacity: 0; -webkit-transform: translateY(0px); }
+  100% { opacity: 1; -webkit-transform: translateY(150px); }
+}
+@-moz-keyframes prev-out {
+  0% { opacity: 0; -moz-transform: translateY(0px); }
+  100% { opacity: 1; -moz-transform: translateY(150px); }
+}
+@-ms-keyframes prev-out {
+  0% { opacity: 0; -ms-transform: translateY(0px); }
+  100% { opacity: 1; -ms-transform: translateY(150px); }
+}
+@keyframes prev-out {
+  0% { opacity: 0; transform: translateY(0px); }
+  100% { opacity: 1; transform: translateY(150px); }
+}
+
+@each $anim in next-in, next-out, prev-in, prev-out {
+	.carousel-placeholder > li.#{$anim} {
+    -webkit-animation: #{$anim} 0.5s;
+    -moz-animation: #{$anim} 0.5s;
+    -o-animation: #{$anim} 0.5s;
+    animation: #{$anim} 0.5s;
+	}
+}

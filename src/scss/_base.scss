@@ -1,0 +1,40 @@
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	background-color: $color-bg;
+	color: $color-text;
+	line-height: 1.2;
+	overflow: hidden;
+	font-size: $font-size-text;
+	font-family: $font-family-text;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	background-color: transparent;
+}
+a:active,
+a:hover {
+	outline: 0;
+}
+
+img,
+a > img {
+  @include img-responsive;
+  line-height: 1;
+  border: 0;
+}
+
+div {
+	overflow: hidden;
+}
