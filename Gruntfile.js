@@ -1,40 +1,36 @@
 module.exports = function(grunt) {
 	'use strict';
+	//Load all grunt tasks
+	require('load-grunt-tasks')(grunt);
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-
 		sass: {
 		    dist: {
 				files: {
-					'src/css/main.css': 'src/scss/main.scss'
+					'src/css/main.css': 'src/scss/main.scss',
+					'component/carousel-component.css': 'src/scss/carousel-component.scss'
 				},
 				options: {
-					style: 'expanded',
-					debugInfo: false,
-					lineNumbers: false,
-					trace: false
+					style: 'compressed',
 				}
 		    }
 		},
 
 		jshint: {
 		  // define the files to lint
-		  files: [ 'Gruntfile.js', 'src/js/*.js' ],
+		  files: [ 'Gruntfile.js', 'src/js/main.js' ],
 		  // configure JSHint (documented at http://www.jshint.com/docs/)
 		  options: {
-		      // more options here if you want to override JSHint defaults
 		    globals: {
-		      jQuery: true,
-		      console: true,
-		      module: true
+		      jQuery: true
 		    }
 		  }
 		},
 
 		watch: {
 			js: {
-				files: [ 'src/js/main.js' ],
+				files: [ 'src/js/*.js' ],
 	  			tasks: [ 'jshint' ]
 	  		},
 	  		css: {
@@ -53,13 +49,7 @@ module.exports = function(grunt) {
 
 	});
 
-	// Dependencies
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-contrib-sass' );
-	grunt.loadNpmTasks( 'grunt-contrib-concat' );
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-
-	// Default task
-	grunt.registerTask( 'default', [ 'watch' ] );
+	// Defaults tasks
+	grunt.registerTask( 'default', [ 'watch:css' ] );
+	grunt.registerTask( 'compile', [ 'jshint', 'sass', 'uglify' ] );
 };

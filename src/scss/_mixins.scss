@@ -1,32 +1,49 @@
 @mixin clearfix() {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
 }
 
 // Sizing shortcuts
 @mixin size($width, $height) {
-  width: $width;
-  height: $height;
-}
-
-@mixin square($size) {
-  @include size($size, $size);
+ 	width: $width;
+ 	height: $height;
 }
 
 @mixin img-responsive($display: block) {
-  display: $display;
-  max-width: 100%;
-  height: auto;
+	 display: $display;
+	 max-width: 100%;
+	 height: auto;
 }
 
 @mixin transition($transition...) {
-  -webkit-transition: $transition;
-  -o-transition: $transition;
-  transition: $transition;
+	-webkit-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}
+
+@mixin transform($transform...) {
+	-moz-transform: $transform;
+	-webkit-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
+}
+
+@mixin transition-timing-function($timing-function) {
+	-webkit-transition-timing-function: $timing-function;
+	transition-timing-function: $timing-function;
+}
+
+@mixin breakpoint($point) {
+	@if $point == tablet {
+		@media (max-width: 850px) and (min-width: 450px) { @content; }
+	}
+	@else if $point == mobile {
+		@media (max-width: 450px) { @content; }
+	}
 }

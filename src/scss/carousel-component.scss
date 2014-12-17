@@ -1,9 +1,9 @@
 // ------------------------------
-// BASE MAIN STYLES
-// Styles for index page.
+// CAROUSEL MAIN STYLES
+// Styles for Polymer carousel
 //
 // Author: Enric Girona
-// Generated file: main.css
+// Generated file: carousel-component.css
 // ------------------------------
 
 // BASE CONFIG VARIABLES
@@ -12,5 +12,5 @@
 // MIXINS HELPERS
 @import "_mixins.scss";
 
-// BASIC STYLES
-@import "_base.scss";
+// MAIN CAROUSEL STYLES
+@import "_carousel.scss";

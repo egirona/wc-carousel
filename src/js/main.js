@@ -1,26 +1,34 @@
-$(function() {
-  var currentIndex = 0,
-      itemCount    = $('.carousel-placeholder > li').length;
-
-  $('.carousel-placeholder > li:eq(' + currentIndex + ')').addClass('active');
-
-  $('.carousel-nav').on('click', function() {
-    var $active  = $('.carousel-placeholder > li.active'),
-        isNext   = $(this).hasClass('next');
-    currentIndex = (currentIndex + (isNext ? 1 : -1)) % itemCount;
-
-    /* go back to the last item if we hit -1 */
-    if (currentIndex === -1) {
-      currentIndex = itemCount - 1;
+function Check_next()
+    {
+    var i = 0,
+        items = document.getElementsByName("item"),
+        itemsCount = items.length;
+    for ( i ; i < itemsCount ; ++i )
+        {
+        if ( items[i].checked === true )
+            {
+            if ( i == itemsCount - 1 )
+            {
+                items[0].checked = true;
+            } else {
+                items[i + 1].checked = true;
+            }
+            break;
+        }
     }
-
-    var $next = $('.carousel-placeholder > li:eq(' + currentIndex + ')');
-    $active.addClass(isNext ? 'next-out' : 'prev-out');
-    $next.addClass('active').addClass(isNext ? 'next-in' : 'prev-in');
-    setTimeout(function() {
-      $active.removeClass('active next-out prev-out');
-      $next.removeClass('next-in prev-in');
-    }, 500);
-    return false;
-  });
-});
+}
+var initAuto = function ()
+    {
+        setInterval(function () { Check_next();}, 3000);
+    };
+var stopAuto = function ()
+    {
+        clearInterval(initAuto);
+    };
+initAuto();
+function handleMouseOver() {
+    stopAuto();
+}
+function handleMouseOut() {
+    initAuto();
+}

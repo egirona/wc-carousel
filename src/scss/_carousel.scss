@@ -1,87 +1,152 @@
-.carousel {
-	position: relative;
-	max-width: 800px;
-	min-height: 500px;
+/* Init common styles */
+label,
+img {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
-.carousel-placeholder {
-	position: relative;
+input {
+	display: none;
+}
+
+/* Placeholders */
+.wrap {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+#overflow {
 	width: 100%;
-	list-style: none;
-	@include clearfix;
-	padding: 0;
-	margin: 0;
+	overflow: hidden;
+}
 
-	> li {
-		position: absolute;
+/* Carousel placeholder - Styles for box-model */
+#carousel {
+	& {
+		box-shadow: 1px 1px 4px $oil;
+		padding: 1%;
+		background: $body-bg;
 	}
-
-	.active {
-		display: block;
+	.inner {
+		width: 500%;
+		line-height: 0;
 	}
+	img {
+		width: 20%;
+		float: left;
+	}
+	@include breakpoint(tablet) {
+		padding: 1% 0;
+	}
+	@include breakpoint(mobile) {
+		padding: 1% 0;
+	}
+}
 
-	> li:not(.active) {
+#item1:checked ~ #carousel .inner { margin-left:0; }
+#item2:checked ~ #carousel .inner { margin-left:-100%; }
+#item3:checked ~ #carousel .inner { margin-left:-200%; }
+#item4:checked ~ #carousel .inner { margin-left:-300%; }
+#item5:checked ~ #carousel .inner { margin-left:-400%; }
+
+/* Nav Setup - Previous and Next buttons */
+#nav {
+	margin: -25% 0 0 0;
+	@include size(100%, 50px);
+	label {
 		display: none;
+		@include size(50px, 50px);
+		opacity: 0.6;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	@include breakpoint(tablet) {
+		width: 100%;
+	}
+	@include breakpoint(mobile) {
+		width: 100%;
 	}
 }
 
-.carousel-dots {
-	& {
-		position: absolute;
-		bottom: 10px;
-		left: 50%;
-		z-index: 15;
-		width: 60%;
-		margin-left: -30%;
-		padding-left: 0;
-		list-style: none;
-		text-align: center;
-	}
-	li {
-		display: inline-block;
-		@include square(10px);
-		margin: 1px;
-		text-indent: -999px;
-		border: 1px solid $color-bg;
+#item1:checked ~ #nav label:nth-child(2),
+#item2:checked ~ #nav label:nth-child(3),
+#item3:checked ~ #nav label:nth-child(4),
+#item4:checked ~ #nav label:nth-child(5),
+#item5:checked ~ #nav label:nth-child(1) {
+	background: url('arrow_right_white.png') no-repeat;
+	float: right;
+	margin: 0;
+	display: block;
+}
+
+#item1:checked ~ #nav label:nth-child(5),
+#item2:checked ~ #nav label:nth-child(1),
+#item3:checked ~ #nav label:nth-child(2),
+#item4:checked ~ #nav label:nth-child(3),
+#item5:checked ~ #nav label:nth-child(4) {
+	background: url('arrow_left_white.png') no-repeat;
+	float: left;
+	margin-left: 30px;
+	display: block;
+}
+
+/* Dots Setup - Navigation by dots */
+#dots {
+	margin: 15% 0 0;
+	text-align: center;
+	position: relative;
+	label {
 		border-radius: 10px;
-		cursor: pointer;
-		background-color: rgba(0,0,0,0); // IE9
-	}
-	.on,
-	li:hover {
-		margin: 0;
-		width: 12px;
-		height: 12px;
-		background-color: $color-bg;
-	}
-}
-
-.carousel-nav {
-	& {
-		position: absolute;
-		bottom: 15%;
-		z-index: 5;
+		margin: 1px;
 		display: inline-block;
-		width: 20px;
-		height: 30px;
-		margin-top: -10px;
-		text-indent: -9999px;
-		padding: 25px;
-		border-radius: 25px;
-		opacity: .6;
-	}
-	&:hover {
-		opacity: .7;
+		@include size(10px, 10px);
+		background: rgba(0,0,0,0);
+		border: 1px solid $body-bg;
+		@include transition(background-color 0.2s linear);
+		&:hover {
+			margin: 0;
+			@include size(12px, 12px);
+			background-color: $body-bg;
+		}
+		@include breakpoint(tablet) {
+			@include transform(scale(0.8));
+		}
+		@include breakpoint(mobile) {
+			@include transform(scale(0.6));
+		}
 	}
 
+	@include breakpoint(tablet) {
+		margin: 14% 0 0;
+	}
+	@include breakpoint(mobile) {
+		margin: 6% 0 0;
+	}
 }
-.prev {
-		left: 5%;
-		margin-left: -10px;
-		background: url('../img/arrow_left_white.png') no-repeat 15px 10px $color-text;
-	}
-.next {
-		right: 5%;
-		margin-right: -10px;
-		background: url('../img/arrow_right_white.png') no-repeat 15px 10px $color-text;
-	}
+
+#item1:checked ~ #dots label:nth-child(1),
+#item2:checked ~ #dots label:nth-child(2),
+#item3:checked ~ #dots label:nth-child(3),
+#item4:checked ~ #dots label:nth-child(4),
+#item5:checked ~ #dots label:nth-child(5) {
+	background: $body-bg;
+}
+
+/* Animations */
+#carousel .inner {
+	-webkit-transform: translateZ(0);
+	@include transition(all 800ms cubic-bezier( .55, 0, .1, 1 ));
+	@include transition-timing-function(cubic-bezier( .55, 0, .1, 1 ));
+}
+
+#nav label{
+	-webkit-transform: translateZ(0);
+	@include transition(opacity 0.2s ease-out);
+}
+
+#nav, #carousel {
+	-webkit-transform: translateZ(0);
+	@include transition(all 0.5s ease-out);
+}

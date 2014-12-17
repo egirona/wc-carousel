@@ -1,4 +1,14 @@
-$color-bg			: #fff;
-$color-text			: #333;
+//Colors
+$white	: #FFFFFF;
+$steel	: #666666;
+$oil 	: #333333;
+
+//Fonts
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$base-font-size		: 62.5%;
 $font-size-text		: 1.6rem;
-$font-family-text	: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//Body config
+$body-bg			: $white;
+$body-font-color	: $oil;
+$body-font-family	: $font-family-sans-serif;

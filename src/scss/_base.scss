@@ -1,5 +1,5 @@
 html {
-	font-size: 62.5%;
+	font-size: $base-font-size;
 	box-sizing: border-box;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -10,31 +10,29 @@ html {
 }
 
 body {
-	background-color: $color-bg;
-	color: $color-text;
+	background-color: $body-bg;
+	color: $body-font-color;
 	line-height: 1.2;
 	overflow: hidden;
 	font-size: $font-size-text;
-	font-family: $font-family-text;
+	font-family: $font-family-sans-serif;
 	margin: 0;
 }
 
 a {
 	text-decoration: none;
 	background-color: transparent;
-}
-a:active,
-a:hover {
-	outline: 0;
-}
-
-img,
-a > img {
-  @include img-responsive;
-  line-height: 1;
-  border: 0;
+	&:active,
+	&:hover {
+		outline: 0;
+	}
 }
 
-div {
-	overflow: hidden;
+img {
+	@include img-responsive;
+}
+
+label {
+	cursor: pointer;
+	text-decoration: none;
 }
